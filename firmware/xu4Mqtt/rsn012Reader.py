@@ -67,7 +67,7 @@ def main():
                     ("windSpeed"         ,windSpeed),
                     ("windDirection"     ,windDirection),
                     ])
-            print(sensorDictionary)
+            # print(sensorDictionary)
             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
 
 
