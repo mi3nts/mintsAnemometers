@@ -64,7 +64,7 @@ def main():
 
             sensorDictionary = OrderedDict([
                     ("dateTime"          ,str(dateTime)),
-                    ("windSpeed"         ,windSpeed),
+                    ("windSpeed"         ,windSpeed/100),
                     ("windDirection"     ,windDirection),
                     ])
             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
