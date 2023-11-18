@@ -5,7 +5,7 @@ Contains firmware for mints anemometers
 
 
 ## Airmar 
-The airmar uses RS232 communication protocol. The cables that we typically use would encounter Data out for blue or yellow cables while all others are floating except for power and ground. 
+The airmar uses RS232 communication protocol. The cables that we typically use would encounter Data out for blue or white wires while all others are floating except for power and ground. On mints projects typically instructions are not given to the airmar. SBCs only mean to read data from airmars.
 
 ![Airmar](https://raw.githubusercontent.com/mi3nts/mintsAnemometers/main/res/airmarWiring.png)
 
