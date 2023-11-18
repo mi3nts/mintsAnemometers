@@ -46,7 +46,7 @@ def main():
             print("---------===============----------")
             dateTime  = datetime.datetime.now()
             ser.write(windSpeedDirectionRequest)
-            response = ser.read(9)
+            response = ser.read(11)
             print(dateTime)
             print(len(response))
             for x in response:
