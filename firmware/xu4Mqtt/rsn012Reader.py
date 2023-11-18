@@ -55,7 +55,6 @@ def main():
 
     while True:
         try:
-            print("---------===============----------")
             dateTime  = datetime.datetime.now()
             ser.write(windSpeedDirectionRequest)
             response = ser.read(9)
