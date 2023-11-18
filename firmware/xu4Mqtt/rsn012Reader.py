@@ -8,7 +8,7 @@ import serial
 from collections import OrderedDict
 
 dataFolder    =  mD.dataFolder
-rsn012Port    =  mD.rsn012Port
+rsn012Port    =  str(mD.rsn012Port[0])
 print(rsn012Port)
 
 baudRate = 4800
