@@ -99,6 +99,3 @@ if __name__ == "__main__":
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
     print("MQTT Broker and Port       : {0}, {1}".format(mqttOn,mqttPort))
     #-------------------------------------------#
-    print("IPS Ports :")
-    for dev in ipsPorts:
-        print("\t{0}".format(dev))
