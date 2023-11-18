@@ -71,6 +71,7 @@ if __name__ == "__main__":
     print("=============")
     if len(rsn012Port)>0:
         print("Monitoring RSN012 Sensor on port: {0}".format(rsn012Port[0])+ " with baudrate " + str(baudRate))
+        time.sleep(10)
         main()
     else:
         print("Nn RSN012 port found")
