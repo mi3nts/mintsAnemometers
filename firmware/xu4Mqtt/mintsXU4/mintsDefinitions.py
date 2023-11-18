@@ -41,6 +41,13 @@ def findRSN012Port():
             ozonePort.append(str(p[0]).split(" ")[0])
     return ozonePort
 
+def findPortV2(find):
+    ports = list(serial.tools.list_ports.comports())
+    for p in ports:
+        currentPort = str(p)
+        if(currentPort.find(find)>0):
+            return(currentPort.split(" ")[0])
+          
 
 def findMacAddress():
     macAddress= get_mac_address(interface="eth0")
@@ -68,23 +75,22 @@ dataFolderMQTTReference   = "/home/teamlary/mintsData/referenceMQTT"
 dataFolder                = "/home/teamlary/mintsData/raw"
 dataFolderMQTT            = "/home/teamlary/mintsData/rawMQTT"
 
-ipsPorts              = findIPSPorts()
 
-show2Port             = findPort("CP2104 USB to UART Bridge Controller")
 macAddress            = findMacAddress()
 latestDisplayOn       = False
 latestOn              = False
+
+
 airmarPort            = findAirmarPort()
 rsn012Port            = findRSN012Port()
+gpsPort               = findPort("GPS/GNSS Receiver")
+
 
 # For MQTT 
-
 mqttOn                = True
 mqttCredentialsFile   = 'mintsXU4/credentials.yml'
 mqttBroker            = "mqtt.circ.utdallas.edu"
 mqttPort              =  8883  # Secure port
-gpsPort               = findPort("GPS/GNSS Receiver")
-
 
 if __name__ == "__main__":
     # the following code is for debugging
@@ -94,6 +100,7 @@ if __name__ == "__main__":
     print("Data Folder Raw            : {0}".format(dataFolder))
     print("Airmar Port                : {0}".format(airmarPort))
     print("RSN012 Port                : {0}".format(rsn012Port))
+    print("GPS Port                   : {0}".format(gpsPort))    
     print("Latest On                  : {0}".format(latestOn))
     print("MQTT On                    : {0}".format(mqttOn))
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
