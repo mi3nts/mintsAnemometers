@@ -67,10 +67,7 @@ def main():
                     ("windSpeed"         ,windSpeed),
                     ("windDirection"     ,windDirection),
                     ])
-            # print(sensorDictionary)
             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
-
-
             startTime = delayTime(startTime,responseTime,deltaTime)
 
         except Exception as e:
