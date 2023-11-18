@@ -3,6 +3,18 @@ Contains firmware for mints anemometers
   - Airmar
   - RS-CFSFX-N01-2
 
+
+## Airmar 
+The airmar uses RS232 communication protocol. The cables that we typically use would encounter Data out for blue or yellow cables while all others are floating except for power and ground. 
+
+
+
+
+
+
+
+
+
 ##  RS-CFSFX-N01-2
 
 The RS-485 standard allows for two different data line configurations:
