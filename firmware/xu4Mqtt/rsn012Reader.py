@@ -8,7 +8,7 @@ import serial
 from collections import OrderedDict
 
 dataFolder    =  mD.dataFolder
-rsn012Port    =  mD.rsn012Port[0]
+rsn012Port    =  mD.rsn012Port
 print(rsn012Port)
 
 baudRate = 4800
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     print("    MINTS    ")
     print("=============")
     if len(rsn012Port)>0:
-        print("Monitoring RSN012 Sensor on port: {0}".format(rsn012Port[0])+ " with baudrate " + str(baudRate))
+        print("Monitoring RSN012 Sensor on port: {0}".format(rsn012Port)+ " with baudrate " + str(baudRate))
         time.sleep(10)
         main()
     else:
