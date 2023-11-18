@@ -15,7 +15,7 @@ dataFolder    =  mD.dataFolder
 rsn012Port    =  str(mD.rsn012Port[0])
 baudRate      = 4800
 responseTime  = 1
-deltaTime     = .000950
+deltaTime     = .000975
 sensorName    = "RSN012"
 
 windSpeedDirectionRequest = bytearray([
