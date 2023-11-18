@@ -15,6 +15,7 @@ dataFolder    =  mD.dataFolder
 rsn012Port    =  str(mD.rsn012Port[0])
 baudRate      = 4800
 responseTime  = 1
+deltaTime     = .000994
 sensorName    = "RSN012"
 
 windSpeedDirectionRequest = bytearray([
@@ -33,9 +34,9 @@ windSpeedDirectionRequest = bytearray([
 #                                 0xC5, 0xCB  # Checksum
 #                             ])
 
-def delayTime(startTime,loopTime):
+def delayTime(startTime,loopTime,deltaTime):
     elapsedTime  = time.time() - startTime
-    sleepTime    = max(0,loopTime - elapsedTime)
+    sleepTime    = max(0,loopTime - elapsedTime-deltaTime)
     time.sleep(sleepTime)
     return time.time();
 
@@ -70,7 +71,7 @@ def main():
             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
 
 
-            startTime = delayTime(startTime,responseTime)
+            startTime = delayTime(startTime,responseTime,)
 
         except Exception as e:
             # Handle any type of exception
