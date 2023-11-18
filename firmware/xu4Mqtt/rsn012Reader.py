@@ -30,6 +30,7 @@ windSpeedDirectionRequest = bytearray([
 #                             ])
 
 def main():
+
     ser = serial.Serial(
             port = rsn012Port,
             baudrate= baudRate,
@@ -68,6 +69,9 @@ if __name__ == "__main__":
     print("=============")
     print("    MINTS    ")
     print("=============")
-    print("Monitoring RSN012 Sensor on port: {0}".format(rsn012Port[0])+ " with baudrate " + str(baudRate))
-    main()
+    if len(rsn012Port)>0:
+        print("Monitoring RSN012 Sensor on port: {0}".format(rsn012Port[0])+ " with baudrate " + str(baudRate))
+        main()
+    else:
+        print("Nn RSN012 port found")
 
