@@ -2,6 +2,11 @@
 from getmac import get_mac_address
 import serial.tools.list_ports
 
+# GET RSN012 working 
+# get GPS GNGGA Working 
+# update node red 
+
+
 def findPort(find):
     ports = list(serial.tools.list_ports.comports())
     for p in ports:
@@ -26,7 +31,16 @@ def findAirmarPort():
         if(currentPort.find("PID=10C4:EA60 SER=0001")>=0):
             ozonePort.append(str(p[0]).split(" ")[0])
     return ozonePort
-  
+
+def findRSN012Port():
+    ports = list(serial.tools.list_ports.comports())
+    ozonePort = []
+    for p in ports:
+        currentPort = str(p[2])
+        if(currentPort.find("USB VID:PID=0403:6001 SER=AU06CSVO")>=0):
+            ozonePort.append(str(p[0]).split(" ")[0])
+    return ozonePort
+
 
 def findMacAddress():
     macAddress= get_mac_address(interface="eth0")
@@ -61,6 +75,8 @@ macAddress            = findMacAddress()
 latestDisplayOn       = False
 latestOn              = False
 airmarPort            = findAirmarPort()
+rsn012Port            = findRSN012Port()
+
 # For MQTT 
 
 mqttOn                = True
@@ -77,6 +93,7 @@ if __name__ == "__main__":
     print("Data Folder Reference      : {0}".format(dataFolderReference))
     print("Data Folder Raw            : {0}".format(dataFolder))
     print("Airmar Port                : {0}".format(airmarPort))
+    print("RSN012 Port                : {0}".format(rsn012Port))
     print("Latest On                  : {0}".format(latestOn))
     print("MQTT On                    : {0}".format(mqttOn))
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
