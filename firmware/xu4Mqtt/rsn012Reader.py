@@ -71,7 +71,7 @@ def main():
             mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
 
 
-            startTime = delayTime(startTime,responseTime,)
+            startTime = delayTime(startTime,responseTime,deltaTime)
 
         except Exception as e:
             # Handle any type of exception
