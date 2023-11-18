@@ -24,5 +24,5 @@ In the RS-485-B configuration, the A and B lines are swapped:
 A to B
 B to A
 
-**The RS-CFSFX-N01-2 follows the RS-485-B convention** 
+**The RS-CFSFX-N01-2 follows the RS-485-B convention.** 
 
