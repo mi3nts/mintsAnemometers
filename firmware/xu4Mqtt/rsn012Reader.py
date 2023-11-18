@@ -33,7 +33,7 @@ def main():
     ser = serial.Serial(
             port = rsn012Port,
             baudrate= baudRate,
-            timeout=0
+            timeout=0,
             parity  =serial.PARITY_NONE,\
             stopbits=serial.STOPBITS_ONE,\
             bytesize=serial.EIGHTBITS,\
