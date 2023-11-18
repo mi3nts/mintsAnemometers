@@ -1,4 +1,8 @@
 
+# Code written for RS-CFSFX-N01-2
+# Ultrasonic wind speed and
+# direction transmitter
+
 import serial
 import datetime
 from mintsXU4 import mintsSensorReader as mSR
@@ -9,9 +13,9 @@ from collections import OrderedDict
 
 dataFolder    =  mD.dataFolder
 rsn012Port    =  str(mD.rsn012Port[0])
-print(rsn012Port)
-
-baudRate = 4800
+baudRate      = 4800
+responseTime  = 1
+sensorName    = "RSN012"
 
 windSpeedDirectionRequest = bytearray([
                                 0x01,  # Device address
@@ -29,6 +33,12 @@ windSpeedDirectionRequest = bytearray([
 #                                 0xC5, 0xCB  # Checksum
 #                             ])
 
+def delayTime(startTime,loopTime):
+    elapsedTime  = time.time() - startTime
+    sleepTime    = max(0,loopTime - elapsedTime)
+    time.sleep(sleepTime)
+    return time.time();
+
 def main():
 
     ser = serial.Serial(
@@ -40,22 +50,28 @@ def main():
             timeout=0.1)
     
 
+    startTime  = time.time()
+
 
     while True:
         try:
             print("---------===============----------")
             dateTime  = datetime.datetime.now()
             ser.write(windSpeedDirectionRequest)
-            response = ser.read(11)
-            print(dateTime)
-            print(len(response))
-            for x in response:
-                print(str(x)+ " - Hex:" +  hex(x)) 
-            speed          = (response[3] << 8) | response[4]
+            response = ser.read(9)
+            windSpeed          = (response[3] << 8) | response[4]
             windDirection  = (response[5] << 8) | response[6]
-            print("Speed = " + str(speed/100) + " m/s")
-            print("Wind Direction = " + str(windDirection) + " degrees north")            
-            time.sleep(1)
+
+            sensorDictionary = OrderedDict([
+                    ("dateTime"          ,str(dateTime)),
+                    ("windSpeed"         ,windSpeed),
+                    ("windDirection"     ,windDirection),
+                    ])
+            print(sensorDictionary)
+            mSR.sensorFinisher(dateTime,sensorName,sensorDictionary)
+
+
+            startTime = delayTime(startTime,responseTime)
 
         except Exception as e:
             # Handle any type of exception
