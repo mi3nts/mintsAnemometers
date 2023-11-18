@@ -1,2 +1,2 @@
 # mintsAnemometers
-Contains firmware mints anemometers
+Contains firmware for mints anemometers
